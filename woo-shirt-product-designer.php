@@ -62,6 +62,17 @@ function spdfw_product_type_register() {
   }
 }	
 
+
+	?>
+	<!-- rotation test 2024 -->
+	
+
+	<?php
+
+
+
+
+
 //*******************************//
 //*********BACKEND PART*********//
 //*******************************//
@@ -1078,11 +1089,54 @@ class spdfw_frontend {
 		}
 		?>
 
+					<!-- rotation test 2024 -->
+	<div>
+	<section id="middle">
+ 
+		<src="moon1.jpg"  >
+		<img id="image" src="<?php echo plugin_dir_url(__FILE__).'/core/img/moon1.jpg'; ?>" width="80px" height="80px"/>
+		 
+			<div style="text-align:center;">
+			<button onclick="rotationImgSens('image', 30, -1);">-30°</button>
+			<input type="number" id="rotateImgNbre" value="0" ; min="-360" max="360" onchange="rotationImgId('image', this.value);">°
+			<button onclick="rotationImgSens('image', 30, 1);">+30°</button>
+			<br />-360<input type="range" id="rotateImgRange" value="0" ; min="-360" max="360" onchange="rotationImgId('image', this.value)" />360
+			<br /><span id="angle2 "></span>
+			
+			</div>
+		<script type='text/javascript'>
+			function rotationImgSens(id, incr, sens) {
+				var img = document.getElementById(id);
+				// changement de la regExp pour récupérer le signe
+				// on met ||[0) pour le 1st passage
+				var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
+				var val = ((t[0] * 1 + (incr * sens)));
+				rotationImgId(id, val);
+				}
+				
+				function rotationImgId(id, val) {
+				var img = document.getElementById(id);
+				// application de la rotation
+				img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - safari
+				img.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
+				img.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer > 9
+				img.style.Otransform = 'rotate(' + val + 'deg)'; // Opera
+				img.style.transform = 'rotate(' + val + 'deg)'; // all
+				document.getElementById('rotateImgNbre').value = val;
+				document.getElementById('rotateImgRange').value = val % 360;
+				}
+		</script>
+	</div>
+
+
+	
+	</div>
+
 		<div class="container design_api_container" style="width: 100%;">
 			<div class="design_api">
 			<div class="designer_api_overlay">
 			<div class="designer_api_overlay_inner">
-				<p><?php echo __('Please wait... A preview will be generated.','woo-shirt-product-designer'); ?></p>
+				<p>hp echo __('Please wait... A preview will be generated.','woo-shirt-product-designer'); ?></p>
 				<p><?php echo __('This can take 20-30 seconds depending on the workload.','woo-shirt-product-designer'); ?></p>
 				<img src="<?php echo plugin_dir_url(__FILE__).'/core/designer/tdesignAPI/images/loading.gif'; ?>" class="designer_loader"/>
 			</div>
@@ -1266,7 +1320,7 @@ class spdfw_frontend {
 							
 						</div>
 						
-						<textarea id="custom_text" placeholder="Create Your Text...&#10; Créer votre texte"></textarea>
+						<textarea id="custom_text" placeholder="Create Your Text Here...&#10;Créer votre texte ici"></textarea>
 						<button type="button" class="btn btn-primary" id="apply_text" data-key="<?php echo session_id(); ?>" data-productid="<?php echo get_the_ID(); ?>" data-id="<?php echo get_post_meta( get_the_ID(), 'designer_text_price', true  );?>">
 							<?php echo __('Add', 'woo-shirt-product-designer'); ?>
 						</button>
@@ -1457,6 +1511,7 @@ class spdfw_frontend {
 				if( $type == "woodesigner" ){
 
 					wp_enqueue_script( 'wspdfw_html2canvas', plugin_dir_url(__FILE__) . '/core/designer/tdesignAPI/js/html2canvas.js');
+					wp_enqueue_script( 'wspdfw_rotate', plugin_dir_url(__FILE__) . '/core/designer/tdesignAPI/js/rotate.js');
 					
 					wp_enqueue_script( 'spdfw_jqueryform', plugin_dir_url(__FILE__) . '/core/designer/tdesignAPI/js/jquery.form.js');
 						
@@ -1467,6 +1522,8 @@ class spdfw_frontend {
 					wp_enqueue_script( 'jquery-ui-draggable' );
 					
 					wp_enqueue_script( 'jquery-ui-resizable' );
+
+					wp_enqueue_script( 'jquery-ui-rotatable' );
 					
 					wp_enqueue_script( 'jquery-touch-punch' );
 					
@@ -1485,6 +1542,7 @@ class spdfw_frontend {
 					);					
 
 					wp_register_script('spdfw_mainapp', plugin_dir_url(__FILE__).'/core/designer/tdesignAPI/js/mainapp.js');
+					wp_register_script('spdfw_mainapp', plugin_dir_url(__FILE__).'/core/designer/tdesignAPI/js/rotate.js');
 					
 					wp_localize_script('spdfw_mainapp', 'woodesignerparms', $parms); 
 					
@@ -1548,7 +1606,8 @@ class spdfw_frontend {
 											maxWidth: 450,
 											minHeight: 60,
 											minWidth: 60
-										});		
+										});
+										jQuery( "#c_icon"+($custom_img)+"" ).rotatable({ angle: 30 });		
 									
 									
 									jQuery("#c_img"+($custom_img)+"").attr(\'src\', e.target.result);

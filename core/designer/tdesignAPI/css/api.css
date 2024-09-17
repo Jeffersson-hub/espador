@@ -758,8 +758,6 @@ div.upload input {
 
 /*=======================detailing================================*/
 
-
-/*
 #image_reply{
 	width:1000px;
 	height:550px;
@@ -772,7 +770,7 @@ div.upload input {
 	border-bottom-right-radius:0px;
 	box-shadow:0 0 20px #3c3c3c;
 	//z-index:9908;
-}*/
+}
 
 .layer {
 	width: 100%;
@@ -875,4 +873,29 @@ div.upload input {
 		margin-bottom: 0px;
 	}	
 	
+}
+
+/*ajout 2024*/
+
+.rotate {
+	width: 400px;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.rotate-obj {
+	width: 100px;
+	height: 30px;
+	background-color: blue;
+	margin-left: 260px;
+	color: yellow;
+	text-align: center;
+	/* transform: rotate(90deg); */
+}
+
+.rotate-btn {
+	font-size: 1em;
+	padding: 1px;
+	margin-top: 30px;
 }

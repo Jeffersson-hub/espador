@@ -288,7 +288,7 @@ $('.designer_variations').on('click', '.designer_add_variation_back_img', functi
 		var numItems = jQuery('.designer_images .designer_image_col').length+1;
 		//console.log(numItems);
 		e.preventDefault();
-		if (numItems < 11) {
+		if (numItems < 110) {
 		$(".designer_images").append('<p class="form-field designer_image_col"><label>'+$imagetext+'</label><img class="designer_addons_img designer_addon_img_'+numItems+'" src="'+plugindir+'/core/img/placeholder.png"/><input type="hidden" class="designer_img_'+numItems+' designerimg" name="designer_addon_images['+numItems+']"  required/><input class="upload_image_button" data-numitems="'+numItems+'" type="button" class="button-primary" value="'+$insertimage+'" /></p>')
 		$(".designer_images").append('<p class="form-field"><label>'+$pricetext+'</label><input type="number" value="0" placeholder="'+$pricetext+'" name="designer_addon_prices['+numItems+']" class="designer_item_price"></p>')
 		} else {

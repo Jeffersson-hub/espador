@@ -667,7 +667,7 @@ function capture_to_cart(session_id, product_id) {
 				minHeight: 60,
 				minWidth: 60
 				});
-			jQuery( "#icon"+($nos_icons)+"" ).rotatable();
+			jQuery( "#icon"+($nos_icons)+"" ).rotatable({ angle: 30 });
 				
 
 			jQuery( "#icon"+($nos_icons)+"" ).css({'top':'100px','left':'150px'});
@@ -748,4 +748,3 @@ function delete_text(f){
 	
 		
 /**Rotate**/
-

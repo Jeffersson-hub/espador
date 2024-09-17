@@ -268,6 +268,7 @@ function getContentDiagonal() {
 				minHeight: 60,
 				minWidth: 60
 			});
+			jQuery( "#text"+($nos_text)+"" ).rotatable({ angle: 30 });
 
 		var $font_			=jQuery('#custom_text').css("font-family");
 		var $font_size		=jQuery('#custom_text').css("font-size");
@@ -559,6 +560,7 @@ function capture_to_cart(session_id, product_id) {
 				minWidth: 60
 				});
 			jQuery( "#icon"+($nos_icons)+"" ).css({'top':'100px','left':'150px'});
+			jQuery( "#icon"+($nos_icons)+"" ).rotatable({ angle: 30 });
 			++$nos_icons;
 	}
 
@@ -605,7 +607,8 @@ function readURL(input) {
 					maxWidth: 450,
 					minHeight: 60,
 					minWidth: 60
-				});		
+				});
+				jQuery( "#c_icon"+($custom_img)+"" ).rotatable({ angle: 30 });		
 			
 			
 			jQuery("#c_img"+($custom_img)+"").attr('src', e.target.result);
