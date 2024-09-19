@@ -63,16 +63,6 @@ function spdfw_product_type_register() {
 }	
 
 
-	?>
-	<!-- rotation test 2024 -->
-	
-
-	<?php
-
-
-
-
-
 //*******************************//
 //*********BACKEND PART*********//
 //*******************************//
@@ -1089,44 +1079,7 @@ class spdfw_frontend {
 		}
 		?>
 
-					<!-- rotation test 2024 -->
-	<div>
-	<section id="middle">
- 
-		<src="moon1.jpg"  >
-		<img id="image" src="<?php echo plugin_dir_url(__FILE__).'/core/img/moon1.jpg'; ?>" width="80px" height="80px"/>
-		 
-			<div style="text-align:center;">
-			<button onclick="rotationImgSens('image', 30, -1);">-30°</button>
-			<input type="number" id="rotateImgNbre" value="0" ; min="-360" max="360" onchange="rotationImgId('image', this.value);">°
-			<button onclick="rotationImgSens('image', 30, 1);">+30°</button>
-			<br />-360<input type="range" id="rotateImgRange" value="0" ; min="-360" max="360" onchange="rotationImgId('image', this.value)" />360
-			<br /><span id="angle2 "></span>
-			
-			</div>
-		<script type='text/javascript'>
-			function rotationImgSens(id, incr, sens) {
-				var img = document.getElementById(id);
-				// changement de la regExp pour récupérer le signe
-				// on met ||[0) pour le 1st passage
-				var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
-				var val = ((t[0] * 1 + (incr * sens)));
-				rotationImgId(id, val);
-				}
-				
-				function rotationImgId(id, val) {
-				var img = document.getElementById(id);
-				// application de la rotation
-				img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - safari
-				img.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
-				img.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer > 9
-				img.style.Otransform = 'rotate(' + val + 'deg)'; // Opera
-				img.style.transform = 'rotate(' + val + 'deg)'; // all
-				document.getElementById('rotateImgNbre').value = val;
-				document.getElementById('rotateImgRange').value = val % 360;
-				}
-		</script>
-	</div>
+					
 
 
 	
@@ -1174,7 +1127,52 @@ class spdfw_frontend {
 						<i class="fa fa-font fa-2x"></i>
 					</div>
 					<?php } ?> 
-					<?php } ?> 
+					<?php } ?>
+
+
+					<!-- rotation test 2024 -->
+	<div>
+	<section id="middle">
+ 
+			<div style="text-align:center;">
+			<button onclick="rotationImgSens('icon', 5, -1);">-5°</button>
+			<input type="number" id="rotateImgNbre" value="0" ; min="-360" max="360" onchange="rotationImgId('+srcimg+', this.value);">°
+			<button onclick="rotationImgSens('icon', 5, 1);">+5°</button>
+			<br />-360<input type="range" id="rotateImgRange" value="0" ; min="-360" max="360" onchange="rotationImgId('+srcimg+', this.value)" />360
+			<br /><span id="angle2 "></span>
+			
+			<!-- <img id=img src=$srcimg width='100%' height='100%' /> -->
+			<img id=icon src='"+srcimg+"' class='new_icon' width='100%' height='100%' />
+
+	</div>
+		<script type='text/javascript'>
+			function rotationImgSens(id, incr, sens, img, srcimg) {
+			var img = document.getElementById(id);
+			// changement de la regExp pour récupérer le signe
+			// on met ||[0) pour le 1st passage
+			var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
+			var val = ((t[0] * 1 + (incr * sens)));
+			rotationImgId(id, val);
+			jQuery.append("<div id=icon"+($nos_icons)+" class='new_icon';'><img src='"+srcimg+"'/></div>");
+			++$nos_icons;
+}
+
+function rotationImgId(id, val, img, srcimg) {
+	var img = document.getElementById(id);
+	// application de la rotation
+	img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - safari
+	img.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
+	img.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer > 9
+	img.style.Otransform = 'rotate(' + val + 'deg)'; // Opera
+	img.style.transform = 'rotate(' + val + 'deg)'; // all
+	document.getElementById('rotateImgNbre').value = val;
+	document.getElementById('rotateImgRange').value = val % 360;
+	jQuery.append("<div id=icon"+($nos_icons)+" class='new_icon';'><img src='"+srcimg+"'/></div>");
+	++$nos_icons;
+
+}
+		</script>
+	</div>
 					
 				</div>
 				<!--=============================================================-->

@@ -152,8 +152,8 @@ span.glyphicon {
 /*======================MENU=============================*/
 
 #menu {
-	width: 64px !important;
-	background: #dbffeb;
+	width: 134px !important;
+	background: #f5fcff;
 	height: auto;
 	border-radius: 2px;
 	box-shadow: 0 0 2px 0 rgba(0, 0, 0, .3);
@@ -876,26 +876,17 @@ div.upload input {
 }
 
 /*ajout 2024*/
-
-.rotate {
-	width: 400px;
-	height: 300px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-.rotate-obj {
-	width: 100px;
-	height: 30px;
-	background-color: blue;
-	margin-left: 260px;
-	color: yellow;
+img {
+	margin: 100px;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+  }
+   
+  #rotateImgNbre {
+	display: inline-block;
+	width: 50px;
 	text-align: center;
-	/* transform: rotate(90deg); */
-}
-
-.rotate-btn {
-	font-size: 1em;
-	padding: 1px;
-	margin-top: 30px;
-}
+  }

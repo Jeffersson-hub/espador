@@ -33,6 +33,11 @@ jQuery(document).ready(function($){
 		jQuery(".custom_font").removeClass('dis_none');
 		jQuery(".T_type,.color_pick,.default_samples,.custom_icon").addClass('dis_none') ;
 	});
+	//ajout 2024
+	jQuery(".sel_rotate_icon").click(function(){
+		jQuery(".rotate_icon").removeClass('dis_none');
+		jQuery(".T_type,.color_pick,.default_samples,.custom_icon").addClass('dis_none') ;
+	});
 	
 	
 	/*=========================SWITCH MENU OVER=====================*/
@@ -549,7 +554,34 @@ function capture_to_cart(session_id, product_id) {
 
 });
 
-	function image_icon(srcimg, productid, id){
+// ajout 2024
+
+function rotationImgSens(id, incr, sens, img, srcimg) {
+	var img = document.getElementById(srcimg);
+	// changement de la regExp pour récupérer le signe
+	// on met ||[0) pour le 1st passage
+	var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
+	var val = ((t[0] * 1 + (incr * sens)));
+	rotationImgId(id, val);
+	jQuery.append("<div id=icon"+($nos_icons)+" class='new_icon';'><img id=img src='"+srcimg+"' width='100%' height='100%' /></div>");
+	++$nos_icons;
+}
+
+function rotationImgId(id, val, img, srcimg) {
+	var img = document.getElementById(srcimg);
+	// application de la rotation
+	img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - safari
+	img.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
+	img.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer > 9
+	img.style.Otransform = 'rotate(' + val + 'deg)'; // Opera
+	img.style.transform = 'rotate(' + val + 'deg)'; // all
+	document.getElementById('rotateImgNbre').value = val;
+	document.getElementById('rotateImgRange').value = val % 360;
+	jQuery().append("<div id=icon"+($nos_icons)+" class='new_icon'><img src='"+srcimg+"' width='100%' height='100%' /></div>");
+	++$nos_icons;
+}
+
+function image_icon(srcimg, productid, id){
 			//alert(productid);
 			jQuery("."+$y_pos+"_print").append("<div id=icon"+($nos_icons)+" class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);'><span data-id='"+id+"'data-productid='"+productid+"' class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='"+srcimg+"' width='100%' height='100%' /></div>");
 			jQuery( "#icon"+($nos_icons)+"" ).draggable({ containment: "parent" });
@@ -560,7 +592,6 @@ function capture_to_cart(session_id, product_id) {
 				minWidth: 60
 				});
 			jQuery( "#icon"+($nos_icons)+"" ).css({'top':'100px','left':'150px'});
-			jQuery( "#icon"+($nos_icons)+"" ).rotatable({ angle: 30 });
 			++$nos_icons;
 	}
 
