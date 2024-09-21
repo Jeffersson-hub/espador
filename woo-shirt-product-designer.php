@@ -1131,47 +1131,65 @@ class spdfw_frontend {
 
 
 					<!-- rotation test 2024 -->
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+ <style type="text/css">
+    .rotated-image {
+      -ms-transform: rotate(36deg); /* IE 9 */
+      -webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */
+      -moz-transform: rotate(36deg);  /* Firefox */
+      -o-transform: rotate(36deg);  /* Opera */
+      transform: rotate(36deg); /* Standard */
+    }
+    img {
+      margin: 50px;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+    #rotateImgNbre {
+      display: inline-block;
+      width: 50px;
+      text-align: center;
+    }
+  </style>
+
 	<div>
 	<section id="middle">
  
 			<div style="text-align:center;">
 			<button onclick="rotationImgSens('icon', 5, -1);">-5°</button>
-			<input type="number" id="rotateImgNbre" value="0" ; min="-360" max="360" onchange="rotationImgId('+srcimg+', this.value);">°
+			<input type="number" id="rotateImgNbre" value="0" ; min="-360" max="360" onchange="rotationImgId('img', this.value);">°
 			<button onclick="rotationImgSens('icon', 5, 1);">+5°</button>
-			<br />-360<input type="range" id="rotateImgRange" value="0" ; min="-360" max="360" onchange="rotationImgId('+srcimg+', this.value)" />360
-			<br /><span id="angle2 "></span>
-			
-			<!-- <img id=img src=$srcimg width='100%' height='100%' /> -->
-			<img id=icon src='"+srcimg+"' class='new_icon' width='100%' height='100%' />
+			<br />-360<input type="range" id="rotateImgRange" value="0" ; min="-360" max="360" onchange="rotationImgId('img', this.value)" />360
+			<img id=icon class=new_icon width='100%' height='100%' />
 
 	</div>
-		<script type='text/javascript'>
-			function rotationImgSens(id, incr, sens, img, srcimg) {
-			var img = document.getElementById(id);
-			// changement de la regExp pour récupérer le signe
-			// on met ||[0) pour le 1st passage
-			var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
-			var val = ((t[0] * 1 + (incr * sens)));
-			rotationImgId(id, val);
-			jQuery.append("<div id=icon"+($nos_icons)+" class='new_icon';'><img src='"+srcimg+"'/></div>");
-			++$nos_icons;
-}
+		<!-- <script type='text/javascript'>
 
-function rotationImgId(id, val, img, srcimg) {
-	var img = document.getElementById(id);
-	// application de la rotation
-	img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - safari
-	img.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
-	img.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer > 9
-	img.style.Otransform = 'rotate(' + val + 'deg)'; // Opera
-	img.style.transform = 'rotate(' + val + 'deg)'; // all
-	document.getElementById('rotateImgNbre').value = val;
-	document.getElementById('rotateImgRange').value = val % 360;
-	jQuery.append("<div id=icon"+($nos_icons)+" class='new_icon';'><img src='"+srcimg+"'/></div>");
-	++$nos_icons;
-
+function rotationImgSens(id, incr, sens) {
+  var img = document.getElementById(id);
+  // changement de la regExp pour récupérer le signe
+  // on met ||[0) pour le 1st passage
+  var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
+  var val = ((t[0] * 1 + (incr * sens)));
+  rotationImgId(id, val);
 }
-		</script>
+ 
+function rotationImgId(id, val) {
+  var img = document.getElementById(id);
+  // application de la rotation
+  img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - safari
+  img.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
+  img.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer > 9
+  img.style.Otransform = 'rotate(' + val + 'deg)'; // Opera
+  img.style.transform = 'rotate(' + val + 'deg)'; // all
+  document.getElementById('rotateImgNbre').value = val;
+  document.getElementById('rotateImgRange').value = val % 360;
+}
+		</script> -->
 	</div>
 					
 				</div>

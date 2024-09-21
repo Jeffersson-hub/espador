@@ -554,32 +554,6 @@ function capture_to_cart(session_id, product_id) {
 
 });
 
-// ajout 2024
-
-function rotationImgSens(id, incr, sens, img, srcimg) {
-	var img = document.getElementById(srcimg);
-	// changement de la regExp pour récupérer le signe
-	// on met ||[0) pour le 1st passage
-	var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
-	var val = ((t[0] * 1 + (incr * sens)));
-	rotationImgId(id, val);
-	jQuery.append("<div id=icon"+($nos_icons)+" class='new_icon';'><img id=img src='"+srcimg+"' width='100%' height='100%' /></div>");
-	++$nos_icons;
-}
-
-function rotationImgId(id, val, img, srcimg) {
-	var img = document.getElementById(srcimg);
-	// application de la rotation
-	img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - safari
-	img.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
-	img.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer > 9
-	img.style.Otransform = 'rotate(' + val + 'deg)'; // Opera
-	img.style.transform = 'rotate(' + val + 'deg)'; // all
-	document.getElementById('rotateImgNbre').value = val;
-	document.getElementById('rotateImgRange').value = val % 360;
-	jQuery().append("<div id=icon"+($nos_icons)+" class='new_icon'><img src='"+srcimg+"' width='100%' height='100%' /></div>");
-	++$nos_icons;
-}
 
 function image_icon(srcimg, productid, id){
 			//alert(productid);
@@ -593,6 +567,34 @@ function image_icon(srcimg, productid, id){
 				});
 			jQuery( "#icon"+($nos_icons)+"" ).css({'top':'100px','left':'150px'});
 			++$nos_icons;
+
+
+// ajout 2024
+
+function rotationImgSens(id, incr, sens, img, srcimg) {
+	jQuery("."+$y_pos+"_print").append("<div id=icon"+($nos_icons)+" class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);'><span data-id='"+id+"'data-productid='"+productid+"' class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='"+srcimg+"' width='100%' height='100%' /></div>");
+	var img = document.getElementById(srcimg);
+	// changement de la regExp pour récupérer le signe
+	// on met ||[0) pour le 1st passage
+	var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
+	var val = ((t[0] * 1 + (incr * sens)));
+	rotationImgId(id, val);
+	
+}
+
+function rotationImgId(id, val, img, srcimg) {
+	jQuery("."+$y_pos+"_print").append("<div id=icon"+($nos_icons)+" class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);'><span data-id='"+id+"'data-productid='"+productid+"' class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='"+srcimg+"' width='100%' height='100%' /></div>");
+	var img = document.getElementById(srcimg);
+	// application de la rotation
+	img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - safari
+	img.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
+	img.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer > 9
+	img.style.Otransform = 'rotate(' + val + 'deg)'; // Opera
+	img.style.transform = 'rotate(' + val + 'deg)'; // all
+	document.getElementById('rotateImgNbre').value = val;
+	document.getElementById('rotateImgRange').value = val % 360;
+	
+}
 	}
 
 function delete_icons(e){
