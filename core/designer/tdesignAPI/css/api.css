@@ -152,12 +152,12 @@ span.glyphicon {
 /*======================MENU=============================*/
 
 #menu {
-	width: 134px !important;
-	background: #f5fcff;
+	width: 54px !important;
+	background: #FFFFFF;
 	height: auto;
 	border-radius: 2px;
 	box-shadow: 0 0 2px 0 rgba(0, 0, 0, .3);
-	font-size: .95rem;
+	font-size: .75rem;
 	margin-right: 1px;
 }
 
@@ -707,7 +707,7 @@ div.upload input {
 	border: 2px solid #00b2a5;
 	border-radius: .125rem;
 	color: #fff;
-	font-size: .99em;
+	font-size: .8rem;
 	font-weight: 700;
 	display: flex;
 	align-items: center;
@@ -730,7 +730,7 @@ div.upload input {
 	justify-content: center;
 	min-width: 4rem;
 	padding: 0.3rem;
-	height: 5rem;
+	height: 2rem;
 	margin-top: 5px;
 	width: 100%;
 }
@@ -747,7 +747,7 @@ div.upload input {
 	height: auto;
 	border-radius: 2px;
 	box-shadow: 0 0 2px 0 rgba(0, 0, 0, .3);
-	font-size: .99em;
+	font-size: .75rem;
 	margin-right: 1px;
 	padding: 5px;
 }
@@ -758,6 +758,8 @@ div.upload input {
 
 /*=======================detailing================================*/
 
+
+/*
 #image_reply{
 	width:1000px;
 	height:550px;
@@ -770,7 +772,7 @@ div.upload input {
 	border-bottom-right-radius:0px;
 	box-shadow:0 0 20px #3c3c3c;
 	//z-index:9908;
-}
+}*/
 
 .layer {
 	width: 100%;
@@ -874,19 +876,3 @@ div.upload input {
 	}	
 	
 }
-
-/*ajout 2024*/
-img {
-	margin: 100px;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-  }
-   
-  #rotateImgNbre {
-	display: inline-block;
-	width: 50px;
-	text-align: center;
-  }

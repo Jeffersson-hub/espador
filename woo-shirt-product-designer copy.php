@@ -1148,9 +1148,8 @@ class spdfw_frontend {
 						<div id="radio3" style="display: none;" ><img src="<?php echo plugin_dir_url(__FILE__) . '/core/designer/tdesignAPI/images/menu_icons/submenu/hoodie.jpg'; ?>" width="100%" height="100%" /></div>
 				
 					</div>
-				
+
 					<div class="color_pick">
-						
 					<?php
 						$saved_designer_variation_front = get_post_meta( get_the_ID(), 'designer_variation_front' )[0];
 						
@@ -1165,7 +1164,6 @@ class spdfw_frontend {
 							foreach ($saved_designer_variation_front as $designer_variation_front_image_key => $designer_variation_front_image_value) {
 								
 								$color = $saved_designer_variation_color[$designer_variation_front_image_key];
-								
 								
 								echo '<div class="color_radio_div designer_change_variation" style="background:#'.$color.'" data-color="'.$color.'" data-productid="'.get_the_ID().'" data-price="'.$saved_designer_variation_prices[$designer_variation_front_image_key].'" data-frontimg="'.$designer_variation_front_image_value.'" data-backimg="'.$saved_designer_variation_back[$designer_variation_front_image_key].'" title="'.strip_tags(wc_price($saved_designer_variation_prices[$designer_variation_front_image_key])).'"></div>';
 							
@@ -1276,110 +1274,6 @@ class spdfw_frontend {
 					</div>
 				</div>
 				<!--=============================================================-->
-
-
-				<!-- Ajout 2024 -->
-				<style type="text/css">
-    .rotated-image {
-      -ms-transform: rotate(36deg); /* IE 9 */
-      -webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */
-      -moz-transform: rotate(36deg);  /* Firefox */
-      -o-transform: rotate(36deg);  /* Opera */
-      transform: rotate(36deg); /* Standard */
-    }
-    img {
-      margin: 10px;
-      -webkit-transition: all 0.5s;
-      -moz-transition: all 0.5s;
-      -ms-transition: all 0.5s;
-      -o-transition: all 0.5s;
-      transition: all 0.5s;
-    }
-    #rotateImgNbre {
-      display: inline-block;
-      width: 50px;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-
-<script>
-  // Fonction pour la rotation basée sur les boutons "Gauche" et "Droite"
-  function myFunction(sens) {
-    rotationImgSens('image', 10, sens); // 10 degrés de rotation à chaque clic
-  }
-
-  function rotationImgSens(id, incr, sens) {
-    var img = document.getElementById(id);
-    // récupération de la transformation actuelle ou [0] pour le premier passage
-    var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
-    var val = ((t[0] * 1 + (incr * sens)));
-    rotationImgId(id, val);
-  }
-
-  function rotationImgId(id, val) {
-    var img = document.getElementById(id);
-    // application de la rotation
-    img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - Safari
-    img.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
-    img.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer
-    img.style.OTransform = 'rotate(' + val + 'deg)'; // Opera
-    img.style.transform = 'rotate(' + val + 'deg)'; // All browsers
-    // mise à jour de l'angle affiché
-    document.getElementById('angle').innerText = val + '°';
-  }
-</script>
-<style type="text/css">
-    .rotated-text {
-      -ms-transform: rotate(36deg); /* IE 9 */
-      -webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */
-      -moz-transform: rotate(36deg);  /* Firefox */
-      -o-transform: rotate(36deg);  /* Opera */
-      transform: rotate(36deg); /* Standard */
-    }
-    txt {
-      margin: 100px;
-      -webkit-transition: all 0.5s;
-      -moz-transition: all 0.5s;
-      -ms-transition: all 0.5s;
-      -o-transition: all 0.5s;
-      transition: all 0.5s;
-    }
-    #rotateTextNbre {
-      display: inline-block;
-      width: 50px;
-      text-align: center;
-    }
-  </style>
-
-<script>
-  // Fonction pour la rotation basée sur les boutons "Gauche" et "Droite"
-  function myFunction(sens) {
-    rotationTxtSens('texte', 10, sens); // 10 degrés de rotation à chaque clic
-  }
-
-  function rotationTxtSens(id, incr, sens) {
-    var txt = document.getElementById(id);
-    // récupération de la transformation actuelle ou [0] pour le premier passage
-    var t = txt.style.transform.match(/(\+?\-?\d+)/g) || [0];
-    var val = ((t[0] * 1 + (incr * sens)));
-    rotationTxtId(id, val);
-  }
-
-  function rotationTxtId(id, val) {
-    var txt = document.getElementById(id);
-    // application de la rotation
-    txt.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - Safari
-    txt.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
-    txt.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer
-    txt.style.OTransform = 'rotate(' + val + 'deg)'; // Opera
-    txt.style.transform = 'rotate(' + val + 'deg)'; // All browsers
-    // mise à jour de l'angle affiché
-    document.getElementById('angle').innerText = val + '°';
-  }
-</script>
-</p>
 				<!--=========================preview start====================================-->
 
 				<div id='preview_t' class="design_api_preview_t">
