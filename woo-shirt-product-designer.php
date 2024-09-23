@@ -1281,10 +1281,11 @@ class spdfw_frontend {
 				<!-- Ajout 2024 -->
 				 <!-- Rotation image -->
 				<style type="text/css">
-    .image-container {
+   /*  .image-container {
+		width: 100px;
     position: relative;
     display: inline-block;
-}
+} */
 .rotateImage {
       -ms-transform: rotate(36deg); /* IE 9 */
       -webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */
@@ -1293,9 +1294,6 @@ class spdfw_frontend {
       transform: rotate(36deg); /* Standard */
 	  display: none;
     }
-	.hide{
-		display: none;
-	}
     img {
       margin: 10px;
       -webkit-transition: all 0.5s;
@@ -1317,22 +1315,25 @@ class spdfw_frontend {
 .rotateImg-left,
 .rotateImg-right {
     position: absolute;
-    top: 100px;
-    transform: translateY(-50%);
+    transform: translateY(-30%);
     display: none; /* Cacher par défaut */
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 10px;
-    cursor: pointer;
+    padding: 5px;
+    /* cursor: pointer; */
 }
 
 .rotateImg-left {
+	position: relative;
     left: 0;
+	margin-top: 25%;
 }
 
 .rotateImg-right {
+	position: absolute;
     right: 0;
+	margin-left: 25%;
 }
 
 .image-container:hover .rotateImg-left,
@@ -1349,6 +1350,12 @@ class spdfw_frontend {
   <!-- <button class="rotateImg-left" onclick='rotateImage("img1", -10)'>Gauche</button>
   <button class="rotateImg-right" onclick='rotateImage("img1", 10)'>Droite</button> -->
 </div>
+<script>
+	setTimeout(function(){
+		document.getElementById('rotateImg-left').innerHTML+=
+	}
+)
+</script>
 <script>
   // Fonction pour la rotation image Img basée sur les boutons "Gauche" et "Droite"
   function myFunction(sens) {
@@ -1372,7 +1379,7 @@ class spdfw_frontend {
     img.style.OTransform = 'rotate(' + val + 'deg)'; // Opera
     img.style.transform = 'rotate(' + val + 'deg)'; // All browsers
     // mise à jour de l'angle affiché
-    document.getElementById('angle').innerText = val + '°';
+  sment.getElementById('angle').innerText = val + '°';
   }
 </script>
 
