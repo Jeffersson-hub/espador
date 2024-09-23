@@ -1279,14 +1279,23 @@ class spdfw_frontend {
 
 
 				<!-- Ajout 2024 -->
+				 <!-- Rotation image -->
 				<style type="text/css">
-    .rotated-image {
+    .image-container {
+    position: relative;
+    display: inline-block;
+}
+.rotateImage {
       -ms-transform: rotate(36deg); /* IE 9 */
       -webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */
       -moz-transform: rotate(36deg);  /* Firefox */
       -o-transform: rotate(36deg);  /* Opera */
       transform: rotate(36deg); /* Standard */
+	  display: none;
     }
+	.hide{
+		display: none;
+	}
     img {
       margin: 10px;
       -webkit-transition: all 0.5s;
@@ -1295,17 +1304,53 @@ class spdfw_frontend {
       -o-transition: all 0.5s;
       transition: all 0.5s;
     }
-    #rotateImgNbre {
+    #rotateNbre {
       display: inline-block;
       width: 50px;
       text-align: center;
-    }
+	}
+	.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.rotateImg-left,
+.rotateImg-right {
+    position: absolute;
+    top: 100px;
+    transform: translateY(-50%);
+    display: none; /* Cacher par défaut */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.rotateImg-left {
+    left: 0;
+}
+
+.rotateImg-right {
+    right: 0;
+}
+
+.image-container:hover .rotateImg-left,
+.image-container:hover .rotateImg-right {
+    display: block; /* Afficher les boutons quand la souris survole l'image */
+}
+
   </style>
 </head>
 <body>
+<div class="image-container">
+  <!-- <img id="img1" src="ton_image.jpg" alt="Image" /> -->
 
+  <!-- <button class="rotateImg-left" onclick='rotateImage("img1", -10)'>Gauche</button>
+  <button class="rotateImg-right" onclick='rotateImage("img1", 10)'>Droite</button> -->
+</div>
 <script>
-  // Fonction pour la rotation basée sur les boutons "Gauche" et "Droite"
+  // Fonction pour la rotation image Img basée sur les boutons "Gauche" et "Droite"
   function myFunction(sens) {
     rotationImgSens('image', 10, sens); // 10 degrés de rotation à chaque clic
   }
@@ -1330,55 +1375,7 @@ class spdfw_frontend {
     document.getElementById('angle').innerText = val + '°';
   }
 </script>
-<style type="text/css">
-    .rotated-text {
-      -ms-transform: rotate(36deg); /* IE 9 */
-      -webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */
-      -moz-transform: rotate(36deg);  /* Firefox */
-      -o-transform: rotate(36deg);  /* Opera */
-      transform: rotate(36deg); /* Standard */
-    }
-    txt {
-      margin: 100px;
-      -webkit-transition: all 0.5s;
-      -moz-transition: all 0.5s;
-      -ms-transition: all 0.5s;
-      -o-transition: all 0.5s;
-      transition: all 0.5s;
-    }
-    #rotateTextNbre {
-      display: inline-block;
-      width: 50px;
-      text-align: center;
-    }
-  </style>
 
-<script>
-  // Fonction pour la rotation basée sur les boutons "Gauche" et "Droite"
-  function myFunction(sens) {
-    rotationTxtSens('texte', 10, sens); // 10 degrés de rotation à chaque clic
-  }
-
-  function rotationTxtSens(id, incr, sens) {
-    var txt = document.getElementById(id);
-    // récupération de la transformation actuelle ou [0] pour le premier passage
-    var t = txt.style.transform.match(/(\+?\-?\d+)/g) || [0];
-    var val = ((t[0] * 1 + (incr * sens)));
-    rotationTxtId(id, val);
-  }
-
-  function rotationTxtId(id, val) {
-    var txt = document.getElementById(id);
-    // application de la rotation
-    txt.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - Safari
-    txt.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
-    txt.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer
-    txt.style.OTransform = 'rotate(' + val + 'deg)'; // Opera
-    txt.style.transform = 'rotate(' + val + 'deg)'; // All browsers
-    // mise à jour de l'angle affiché
-    document.getElementById('angle').innerText = val + '°';
-  }
-</script>
 </p>
 				<!--=========================preview start====================================-->
 

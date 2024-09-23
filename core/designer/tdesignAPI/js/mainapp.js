@@ -692,7 +692,8 @@ function capture_to_cart(session_id, product_id) {
 
 			function image_icon(srcimg, productid, id, uniqe) {
 				// Ajouter l'image avec le bouton supprimer et les boutons de rotation
-				jQuery("."+$y_pos+"_print").append("<div id='icon"+($nos_icons)+"' class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);'><span data-id='" + id + "' data-uniqe='" + uniqe + "' data-productid='" + productid + "' class='delete_icon property_icon' onClick='delete_icons(this);'></span><img id='img" + ($nos_icons) + "' src='" + srcimg + "'/><button class='rotate-left' onclick='rotateImage(\"img" + ($nos_icons) + "\", -10)'>Gauche</button><button class='rotate-right' onclick='rotateImage(\"img" + ($nos_icons) + "\", 10)' width='100px' height='100px'>Droite</button></div>");
+				jQuery("."+$y_pos+"_print").append("<div id='icon"+($nos_icons)+"' class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' ><span data-id='" + id + "' data-uniqe='" + uniqe + "' data-productid='" + productid + "' class='delete_icon property_icon' onClick='delete_icons(this);'></span><div class='image-container'><img id='img" + ($nos_icons) + "' src='" + srcimg + "'/><button class='rotateImg-left' onclick='rotateImage(\"img" + ($nos_icons) + "\", -10)'>Gauche</button><button class='rotateImg-right' onclick='rotateImage(\"img" + ($nos_icons) + "\", 10)' width='100px' height='100px'>Droite</button></div></div>");
+				// jQuery("."+$y_pos+"_print").append("<div id='icon${$nos_icons}' class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' ><span data-id='" + id + "' data-uniqe='" + uniqe + "' data-productid='" + productid + "' class='delete_icon property_icon' onClick='delete_icons(this);'></span><div class='image-container'><img id='" + ($nos_icons) + "' src='" + srcimg + "'/><button class='rotate-left' onclick='rotateImage(\"img" +($nos_icons)+ "\", -10)'>Gauche</button><button class='rotate-right' onclick='rotateImage(\"img" + ($nos_icons) + "\", 10)'>Droite</button></div></div>");
 			
 				// Rendre l'image glissable
 				jQuery("#icon" + ($nos_icons)).draggable({ containment: "parent" });
@@ -726,7 +727,6 @@ function capture_to_cart(session_id, product_id) {
 				// Appliquer la nouvelle rotation
 				img.style.transform = 'rotate(' + newAngle + 'deg)';
 			}
-
 			
 function delete_icons(e){
 	
@@ -803,3 +803,11 @@ function delete_text(f){
 		
 /**Rotate**/
 
+function show_rotate_btn(e){
+	
+	jQuery(e).children('.property_icon').show();
+}
+function hide_rotate_btn(e){
+
+	jQuery(e).children('.property_icon').hide();
+}

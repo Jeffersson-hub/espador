@@ -550,7 +550,7 @@ function capture_to_cart(session_id, product_id) {
 
 	function image_icon(srcimg, productid, id){
 			//alert(productid);
-			jQuery("."+$y_pos+"_print").append("<div id=icon"+($nos_icons)+" class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);'><span data-id='"+id+"'data-productid='"+productid+"' class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='"+srcimg+"' width='100%' height='100%' /></div>");
+			jQuery("."+$y_pos+"_print").append("<div id=icon"+($nos_icons)+" class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' ><span data-id='"+id+"'data-productid='"+productid+"' class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='"+srcimg+"' width='100%' height='100%' /></div>");
 			jQuery( "#icon"+($nos_icons)+"" ).draggable({ containment: "parent" });
 			jQuery( "#icon"+($nos_icons)+"" ).resizable({
 				maxHeight: 480,
@@ -613,4 +613,15 @@ function readURL(input) {
 			};
             reader.readAsDataURL(input.files[0]);
         }
+}
+
+//rotate
+
+function show_rotate_btn(){
+	
+	jQuery().children('.property_icon').show();
+}
+function hide_rotate_btn(){
+
+	jQuery().children('.property_icon').hide();
 }
