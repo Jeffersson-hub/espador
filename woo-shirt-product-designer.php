@@ -1286,7 +1286,7 @@ class spdfw_frontend {
 						position: relative;
 						display: inline-block;
 					} */
-					.rotateImage {
+					.rotated {
 						-ms-transform: rotate(36deg); /* IE 9 */
 						-webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */
 						-moz-transform: rotate(36deg);  /* Firefox */
@@ -1312,8 +1312,8 @@ class spdfw_frontend {
 						display: inline-block;
 					}
 
-					.rotateImg-left,
-					.rotateImg-right {
+					.rotate-left,
+					.rotate-right {
 						position: absolute;
 						transform: translateY(-30%);
 						display: none; /* Cacher par défaut */
@@ -1324,20 +1324,18 @@ class spdfw_frontend {
 						/* cursor: pointer; */
 					}
 
-					.rotateImg-left {
-						position: relative;
+					.rotate-left {
 						left: 0;
-						margin-top: 25%;
+		
 					}
 
-					.rotateImg-right {
-						position: absolute;
+					.rotate-right {
 						right: 0;
 						margin-left: 25%;
 					}
 
-					.image-container:hover .rotateImg-left,
-					.image-container:hover .rotateImg-right {
+					.image-container:hover .rotate-left,
+					.image-container:hover .rotate-right {
 						display: block; /* Afficher les boutons quand la souris survole l'image */
 					}
 
@@ -1348,21 +1346,21 @@ class spdfw_frontend {
 					<!-- <img id="img1" src="ton_image.jpg" alt="Image" /> -->
 
 					<!-- <button class="rotateImg-left" onclick='rotateImage("img1", -10)'>Gauche</button>
-					<button class="rotateImg-right" onclick='rotateImage("img1", 10)'>Droite</button> -->
+					<button class="rotate-right" onclick='rotateImage("img1", 10)'>Droite</button> -->
 					</div>
 					<script>
 						setTimeout(function(){
-							document.getElementById('rotateImg-left').innerHTML+=
+							document.getElementById('rotate-left').innerHTML+=
 						}
 					)
 					</script>
 					<script>
 					// Fonction pour la rotation image Img basée sur les boutons "Gauche" et "Droite"
 					function myFunction(sens) {
-						rotationImgSens('image', 10, sens); // 10 degrés de rotation à chaque clic
+						rotationSens('image', 10, sens); // 10 degrés de rotation à chaque clic
 					}
 
-					function rotationImgSens(id, incr, sens) {
+					function rotationSens(id, incr, sens) {
 						var img = document.getElementById(id);
 						// récupération de la transformation actuelle ou [0] pour le premier passage
 						var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
@@ -1370,113 +1368,7 @@ class spdfw_frontend {
 						rotationImgId(id, val);
 					}
 
-					function rotationImgId(id, val) {
-						var img = document.getElementById(id);
-						// application de la rotation
-						img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - Safari
-						img.style.MozTransform = 'rotate(' + val + 'deg)'; // Firefox
-						img.style.MsTransform = 'rotate(' + val + 'deg)'; // Internet Explorer
-						img.style.OTransform = 'rotate(' + val + 'deg)'; // Opera
-						img.style.transform = 'rotate(' + val + 'deg)'; // All browsers
-						// mise à jour de l'angle affiché
-					sment.getElementById('angle').innerText = val + '°';
-					}
-					</script>
-				<!-- Ajout 2024 -->
-				 <!-- Fin Rotation image -->
-				
-				 <!-- Rotation texte -->
-				 <style type="text/css">
-					/*  .image-container {
-							width: 100px;
-						position: relative;
-						display: inline-block;
-					} */
-					.rotateImage {
-						-ms-transform: rotate(36deg); /* IE 9 */
-						-webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */
-						-moz-transform: rotate(36deg);  /* Firefox */
-						-o-transform: rotate(36deg);  /* Opera */
-						transform: rotate(36deg); /* Standard */
-						display: none;
-						}
-						img {
-						margin: 10px;
-						-webkit-transition: all 0.5s;
-						-moz-transition: all 0.5s;
-						-ms-transition: all 0.5s;
-						-o-transition: all 0.5s;
-						transition: all 0.5s;
-						}
-						#rotateNbre {
-						display: inline-block;
-						width: 50px;
-						text-align: center;
-						}
-						.image-container {
-						position: relative;
-						display: inline-block;
-					}
-
-					.rotateImg-left,
-					.rotateImg-right {
-						position: absolute;
-						transform: translateY(-30%);
-						display: none; /* Cacher par défaut */
-						background-color: rgba(0, 0, 0, 0.5);
-						color: white;
-						border: none;
-						padding: 5px;
-						/* cursor: pointer; */
-					}
-
-					.rotateImg-left {
-						position: relative;
-						left: 0;
-						margin-top: 25%;
-					}
-
-					.rotateImg-right {
-						position: absolute;
-						right: 0;
-						margin-left: 25%;
-					}
-
-					.image-container:hover .rotateImg-left,
-					.image-container:hover .rotateImg-right {
-						display: block; /* Afficher les boutons quand la souris survole l'image */
-					}
-
-					</style>
-					</head>
-					<body>
-					<div class="image-container">
-					<!-- <img id="img1" src="ton_image.jpg" alt="Image" /> -->
-
-					<!-- <button class="rotateImg-left" onclick='rotateImage("img1", -10)'>Gauche</button>
-					<button class="rotateImg-right" onclick='rotateImage("img1", 10)'>Droite</button> -->
-					</div>
-					<script>
-						setTimeout(function(){
-							document.getElementById('rotateImg-left').innerHTML+=
-						}
-					)
-					</script>
-					<script>
-					// Fonction pour la rotation image Img basée sur les boutons "Gauche" et "Droite"
-					function myFunction(sens) {
-						rotationImgSens('image', 10, sens); // 10 degrés de rotation à chaque clic
-					}
-
-					function rotationImgSens(id, incr, sens) {
-						var img = document.getElementById(id);
-						// récupération de la transformation actuelle ou [0] pour le premier passage
-						var t = img.style.transform.match(/(\+?\-?\d+)/g) || [0];
-						var val = ((t[0] * 1 + (incr * sens)));
-						rotationImgId(id, val);
-					}
-
-					function rotationImgId(id, val) {
+					function rotationId(id, val) {
 						var img = document.getElementById(id);
 						// application de la rotation
 						img.style.WebkitTransform = 'rotate(' + val + 'deg)'; // Chrome - Safari
@@ -1489,11 +1381,6 @@ class spdfw_frontend {
 					}
 					</script>
 
-
-				
-				 <!-- Fin Rotation texte -->
-
-					</p>
 				<!--=========================preview start====================================-->
 
 				<div id='preview_t' class="design_api_preview_t">

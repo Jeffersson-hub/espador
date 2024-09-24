@@ -617,11 +617,3 @@ function readURL(input) {
 
 //rotate
 
-function show_rotate_btn(){
-	
-	jQuery().children('.property_icon').show();
-}
-function hide_rotate_btn(){
-
-	jQuery().children('.property_icon').hide();
-}
