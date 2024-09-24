@@ -1340,6 +1340,41 @@ class spdfw_frontend {
 					}
 
 					</style>
+
+					<!-- 2024 texte -->
+
+					<style type="text/css">
+						.new_text .rotate-left,
+.new_text .rotate-right,
+.new_text .delete_text {
+    display: none; /* Masquer les boutons par défaut */
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+}
+
+.new_text .rotate-left {
+    left: 10px;
+}
+
+.new_text .rotate-right {
+    right: 10px;
+}
+
+.new_text:hover .rotate-left,
+.new_text:hover .rotate-right,
+.new_text:hover .delete_text {
+    display: inline-block; /* Afficher les contrôles au survol */
+}
+
+.new_text {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+}
+
+
+					</style>
 					</head>
 					<body>
 					<div class="image-container">
@@ -1348,12 +1383,7 @@ class spdfw_frontend {
 					<!-- <button class="rotateImg-left" onclick='rotateImage("img1", -10)'>Gauche</button>
 					<button class="rotate-right" onclick='rotateImage("img1", 10)'>Droite</button> -->
 					</div>
-					<script>
-						setTimeout(function(){
-							document.getElementById('rotate-left').innerHTML+=
-						}
-					)
-					</script>
+					
 					<script>
 					// Fonction pour la rotation image Img basée sur les boutons "Gauche" et "Droite"
 					function myFunction(sens) {
@@ -1380,6 +1410,49 @@ class spdfw_frontend {
 					sment.getElementById('angle').innerText = val + '°';
 					}
 					</script>
+
+					<!-- Ajout JS rotation texte -->
+
+					<style type="text/css">
+
+					#rotate_left, #rotate_right {
+    				display: none;
+					}
+					</style>
+
+					<button id="rotate_left">Tourner à gauche</button>
+					<button id="rotate_right">Tourner à droite</button>
+
+					<script>
+					var rotationDegree = 0;
+
+					function rotateText(degree) {
+						rotationDegree += degree;
+						jQuery('.new_text').css('transform', 'rotate(' + rotationDegree + 'deg)');
+					}
+
+					jQuery('#rotate_left').click(function() {
+						rotateText(-10); // rotation de 10 degrés vers la gauche
+					});
+
+					jQuery('#rotate_right').click(function() {
+						rotateText(10); // rotation de 10 degrés vers la droite
+					});
+
+					jQuery('#apply_text').click(function(){
+						// ... (votre code existant)
+
+						// Affichez les boutons de rotation
+						jQuery('#rotate_left, #rotate_right').show();
+
+						// Appliquez la rotation actuelle à chaque nouveau texte ajouté
+						jQuery("#text"+($nos_text)).css('transform', 'rotate(' + rotationDegree + 'deg)');
+
+						// ... (votre code existant)
+					});
+					</script>
+
+	
 
 				<!--=========================preview start====================================-->
 

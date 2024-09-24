@@ -299,10 +299,7 @@ jQuery(document).ready(function($){
 
 /*
  * Font resiZable
- * 
- * 
- * 
- *
+ */
 var initDiagonal;
 var initFontSize;
 
@@ -327,11 +324,6 @@ function getContentDiagonal() {
     var contentHeight = jQuery("#content").height();
     return contentWidth * contentWidth + contentHeight * contentHeight;
 }
-/*
- * 
- * 
- * 
- */
 
 	jQuery('#apply_text').click(function(){
 		
@@ -388,6 +380,35 @@ function getContentDiagonal() {
 		//document.getElementById("text"+($nos_text)+" textarea").style.textDecoration=(""+$font_u+"");
 		++$nos_text;
 	});
+
+
+	// ajout rotation texte 2024
+
+	var rotationDegree = 0;
+
+	function rotateText(degree) {
+		rotationDegree += degree;
+		jQuery('.new_text').css('transform', 'rotate(' + rotationDegree + 'deg)');
+	}
+	
+	jQuery('#rotate_left').click(function() {
+		rotateText(-10); // rotation de 10 degrés vers la gauche
+	});
+	
+	jQuery('#rotate_right').click(function() {
+		rotateText(10); // rotation de 10 degrés vers la droite
+	});
+	
+	jQuery('#apply_text').click(function(){
+		// ... (votre code existant)
+	
+		// Appliquez la rotation actuelle à chaque nouveau texte ajouté
+		jQuery("#text"+($nos_text)).css('transform', 'rotate(' + rotationDegree + 'deg)');
+	
+		// ... (votre code existant)
+	});
+	
+
 jQuery('.preview_images').click(function(){
 	var key = jQuery(this).data("key");
 	var product_id = jQuery(this).data("productid");
