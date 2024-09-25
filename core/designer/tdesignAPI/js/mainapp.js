@@ -720,6 +720,8 @@ function capture_to_cart(session_id, product_id) {
 						</div>
 					</div>
 				`);
+				
+		
 				// Rendre l'image glissable
 				jQuery("#icon" + ($nos_icons)).draggable({ containment: "parent" });
 			

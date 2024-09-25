@@ -1278,103 +1278,7 @@ class spdfw_frontend {
 				<!--=============================================================-->
 
 
-				<!-- Ajout 2024 -->
-				 <!-- Rotation image -->
-				<style type="text/css">
-					/*  .image-container {
-							width: 100px;
-						position: relative;
-						display: inline-block;
-					} */
-					.rotated {
-						-ms-transform: rotate(36deg); /* IE 9 */
-						-webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */
-						-moz-transform: rotate(36deg);  /* Firefox */
-						-o-transform: rotate(36deg);  /* Opera */
-						transform: rotate(36deg); /* Standard */
-						display: none;
-						}
-						img {
-						margin: 10px;
-						-webkit-transition: all 0.5s;
-						-moz-transition: all 0.5s;
-						-ms-transition: all 0.5s;
-						-o-transition: all 0.5s;
-						transition: all 0.5s;
-						}
-						#rotateNbre {
-						display: inline-block;
-						width: 50px;
-						text-align: center;
-						}
-						.image-container {
-						position: relative;
-						display: inline-block;
-					}
-
-					.rotate-left,
-					.rotate-right {
-						position: absolute;
-						transform: translateY(-30%);
-						display: none; /* Cacher par défaut */
-						background-color: rgba(0, 0, 0, 0.5);
-						color: white;
-						border: none;
-						padding: 5px;
-						/* cursor: pointer; */
-					}
-
-					.rotate-left {
-						left: 0;
-		
-					}
-
-					.rotate-right {
-						right: 0;
-						margin-left: 25%;
-					}
-
-					.image-container:hover .rotate-left,
-					.image-container:hover .rotate-right {
-						display: block; /* Afficher les boutons quand la souris survole l'image */
-					}
-
-					</style>
-
-					<!-- 2024 texte -->
-
-					<style type="text/css">
-						.new_text .rotate-left,
-.new_text .rotate-right,
-.new_text .delete_text {
-    display: none; /* Masquer les boutons par défaut */
-    position: absolute;
-    top: 10px;
-    cursor: pointer;
-}
-
-.new_text .rotate-left {
-    left: 10px;
-}
-
-.new_text .rotate-right {
-    right: 10px;
-}
-
-.new_text:hover .rotate-left,
-.new_text:hover .rotate-right,
-.new_text:hover .delete_text {
-    display: inline-block; /* Afficher les contrôles au survol */
-}
-
-.new_text {
-    position: relative;
-    display: inline-block;
-    padding: 10px;
-}
-
-
-					</style>
+				
 					</head>
 					<body>
 					<div class="image-container">
@@ -1448,9 +1352,20 @@ class spdfw_frontend {
 						// Appliquez la rotation actuelle à chaque nouveau texte ajouté
 						jQuery("#text"+($nos_text)).css('transform', 'rotate(' + rotationDegree + 'deg)');
 
-						// ... (votre code existant)
+						// Cacher les boutons après 10 secondes
+						setTimeout(function() {
+            			jQuery('#rotate_left, #rotate_right').hide();
+        			}, 5000); // 10 secondes
+					// ... (votre code existant)
+   					});
+
+					// Afficher les boutons en cliquant sur l'icône du menu texte
+					jQuery('.menu_option.sel_text').click(function() {
+					jQuery('#rotate_left, #rotate_right').show();
+
 					});
 					</script>
+					
 
 	
 
@@ -1471,6 +1386,67 @@ class spdfw_frontend {
 					</div>
 				</div>
 				<!--=============================================================-->
+
+				<!-- Ajout 2024 -->
+				 <!-- Rotation image -->
+				 <style type="text/css">
+					.rotated {
+						-ms-transform: rotate(36deg); /* IE 9 */
+						-webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */
+						-moz-transform: rotate(36deg);  /* Firefox */
+						-o-transform: rotate(36deg);  /* Opera */
+						transform: rotate(36deg); /* Standard */
+						display: none;
+						}
+						img {
+						margin: 0px;
+						-webkit-transition: all 0.5s;
+						-moz-transition: all 0.5s;
+						-ms-transition: all 0.5s;
+						-o-transition: all 0.5s;
+						transition: all 0.5s;
+						}
+						#rotateNbre {
+						display: inline-block;
+						width: 50px;
+						text-align: center;
+						}
+						.image-container {
+						position: relative;
+						display: inline-block;
+					}
+
+					.rotate-left,
+					.rotate-right {
+						position: relative;
+						transform: translateY(-30%);
+						display: none; /* Cacher par défaut */
+						background-color: rgba(0, 0, 0, 0.5);
+						color: white;
+						border: none;
+						padding: 5px;
+						/* cursor: pointer; */
+					}
+
+					.rotate-left {
+						top: 20%;
+						left: 0;
+		
+					}
+
+					.rotate-right {
+						right: 0;
+					}
+
+					/* Afficher les boutons quand la souris survole l'image */
+					.image-container:hover .rotate-left,
+					.image-container:hover .rotate-right {
+						 display: inline-block;
+					} 
+
+					</style>
+
+					
 				<!--======================view start=======================================-->
 
 				<div id='view_mode'>
