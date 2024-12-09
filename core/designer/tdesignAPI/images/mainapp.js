@@ -411,7 +411,7 @@ var scrollPos;
     
  console.log(scrollPos);
 	
-
+ jQuery('#rotate_left, #rotate_right').hide();
 	jQuery(".designer_api_menu").hide();
 	jQuery(".designer_api_options").hide();
 	jQuery("#view_mode").hide();

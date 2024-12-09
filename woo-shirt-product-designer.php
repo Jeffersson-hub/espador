@@ -1121,6 +1121,63 @@ class spdfw_frontend {
 					</div>
 					<?php } ?> 
 					<?php } ?> 
+
+
+					<!-- Ajout JS rotation texte 2024 -->
+
+					<button id="rotate_right"><i class="fa fa-repeat style="font-size:24px"><b><br>Text left</button></b></i>
+					<button id="rotate_left"><i class="fa fa-undo fa-1x" aria-hidden="true"><b><br>Text right</button></b></i>
+
+					<!-- <style type="text/css">
+
+					#rotate_left, #rotate_right {
+    				display: none;
+					width: 53px;
+					height: 53px;
+					border: 1px solid;
+					background-color: aqua;
+
+					}
+					</style> -->
+
+					<script>
+					var rotationDegree = 0;
+
+					function rotateText(degree) {
+						rotationDegree += degree;
+						jQuery('.new_text').css('transform', 'rotate(' + rotationDegree + 'deg)');
+					}
+
+					jQuery('#rotate_left').click(function() {
+						rotateText(); // rotation de 10 degrés vers la gauche
+					});
+
+					jQuery('#rotate_right').click(function() {
+						rotateText(); // rotation de 10 degrés vers la droite
+					});
+
+					jQuery('#apply_text').click(function(){
+						// ... (votre code existant)
+
+						// Affichez les boutons de rotation
+						jQuery('#rotate_left, #rotate_right').show();
+
+						// Appliquez la rotation actuelle à chaque nouveau texte ajouté
+						jQuery("#text"+($nos_text)).css('transform', 'rotate(' + rotationDegree + 'deg)');
+
+						// Cacher les boutons après 10 secondes
+						setTimeout(function() {
+            			jQuery('#rotate_left, #rotate_right').hide();
+        			}, 30000); // 1 secondes
+					// ... (votre code existant)
+   					});
+
+					// Afficher les boutons en cliquant sur l'icône du menu texte
+					jQuery('.menu_option.sel_text').click(function() {
+					jQuery('#rotate_left, #rotate_right').show();
+
+					});
+					</script>
 					
 				</div>
 				<!--=============================================================-->
@@ -1313,58 +1370,15 @@ class spdfw_frontend {
 						// mise à jour de l'angle affiché
 					sment.getElementById('angle').innerText = val + '°';
 					}
-					</script>
-
-					<!-- Ajout JS rotation texte -->
-
-					<style type="text/css">
-
-					#rotate_left, #rotate_right {
-    				display: none;
-					}
-					</style>
-
-					<button id="rotate_left">Tourner à gauche</button>
-					<button id="rotate_right">Tourner à droite</button>
-
-					<script>
-					var rotationDegree = 0;
-
-					function rotateText(degree) {
-						rotationDegree += degree;
-						jQuery('.new_text').css('transform', 'rotate(' + rotationDegree + 'deg)');
-					}
-
-					jQuery('#rotate_left').click(function() {
-						rotateText(-10); // rotation de 10 degrés vers la gauche
-					});
-
-					jQuery('#rotate_right').click(function() {
-						rotateText(10); // rotation de 10 degrés vers la droite
-					});
-
-					jQuery('#apply_text').click(function(){
-						// ... (votre code existant)
-
-						// Affichez les boutons de rotation
-						jQuery('#rotate_left, #rotate_right').show();
-
-						// Appliquez la rotation actuelle à chaque nouveau texte ajouté
-						jQuery("#text"+($nos_text)).css('transform', 'rotate(' + rotationDegree + 'deg)');
-
+					jQuery('#apply_img').click(function(){
+	
 						// Cacher les boutons après 10 secondes
 						setTimeout(function() {
-            			jQuery('#rotate_left, #rotate_right').hide();
-        			}, 5000); // 10 secondes
-					// ... (votre code existant)
-   					});
-
-					// Afficher les boutons en cliquant sur l'icône du menu texte
-					jQuery('.menu_option.sel_text').click(function() {
-					jQuery('#rotate_left, #rotate_right').show();
-
-					});
+            			jQuery('#rotate-left, #rotate-right').hide();
+        			}, 30000); // 1 secondes
 					</script>
+
+					
 					
 
 	
@@ -1387,8 +1401,7 @@ class spdfw_frontend {
 				</div>
 				<!--=============================================================-->
 
-				<!-- Ajout 2024 -->
-				 <!-- Rotation image -->
+				<!-- Ajout CSS 2024 Rotation image -->
 				 <style type="text/css">
 					.rotated {
 						-ms-transform: rotate(36deg); /* IE 9 */
@@ -1399,7 +1412,7 @@ class spdfw_frontend {
 						display: none;
 						}
 						img {
-						margin: 0px;
+						 margin: px;
 						-webkit-transition: all 0.5s;
 						-moz-transition: all 0.5s;
 						-ms-transition: all 0.5s;
@@ -1418,7 +1431,7 @@ class spdfw_frontend {
 
 					.rotate-left,
 					.rotate-right {
-						position: relative;
+						position: absolute;
 						transform: translateY(-30%);
 						display: none; /* Cacher par défaut */
 						background-color: rgba(0, 0, 0, 0.5);
@@ -1429,13 +1442,14 @@ class spdfw_frontend {
 					}
 
 					.rotate-left {
-						top: 20%;
+						top: 45px;
 						left: 0;
 		
 					}
 
 					.rotate-right {
-						right: 0;
+						top: 45px;
+						right: -30px;
 					}
 
 					/* Afficher les boutons quand la souris survole l'image */
@@ -1454,13 +1468,13 @@ class spdfw_frontend {
 						<span class="mode_img_wrap">
 							<img id="o_front" class="o_front_designer" data-frontimg="" src="<?php echo $first_designer_variation_front; ?>" width="100%" height="80%" />
 						</span>
-						<p><?php echo __('Front', 'woo-shirt-product-designer'); ?></p>
+						<p><?php echo __('Left', 'woo-shirt-product-designer'); ?></p>
 					</div>
 					<div  class="mode">
 						<span class="mode_img_wrap">
 							<img id="o_back" src="<?php echo $first_designer_variation_back; ?>" width="100%" height="80%" />
 						</span>
-						<p><?php echo __('Back', 'woo-shirt-product-designer'); ?></p>
+						<p><?php echo __('Right', 'woo-shirt-product-designer'); ?></p>
 					</div>
 					<div class="mode designer_hide">
 						<span class="mode_img_wrap">
@@ -1476,7 +1490,7 @@ class spdfw_frontend {
 						<div id="designer_overview_content">
 						
 						<div id="designer_calculator_groundprice">
-						<b><?php echo __('Base price', 'woo-shirt-product-designer'); ?>:</b>
+						<b><?php echo __('Base price color et image', 'woo-shirt-product-designer'); ?>:</b>
 						<div class="designer_calculator_groundprice_value"><?php echo wc_price(0); ?></div>
 						</div>
 						
@@ -1546,12 +1560,17 @@ class spdfw_frontend {
 							<input name="add-to-cart" type="hidden" value="<?php the_ID(); ?>" />
 							<select name="size" class="woo_designer_size" required>
 								<option value=""><?php echo __('Select size...', 'woo-shirt-product-designer'); ?></option>
-								<option value="xs"><?php echo __('XS', 'woo-shirt-product-designer'); ?></option>
-								<option value="s"><?php echo __('S', 'woo-shirt-product-designer'); ?></option>
-								<option value="m"><?php echo __('M', 'woo-shirt-product-designer'); ?></option>
-								<option value="l"><?php echo __('L', 'woo-shirt-product-designer'); ?></option>
-								<option value="xl"><?php echo __('XL', 'woo-shirt-product-designer'); ?></option>
-								<option value="xxl"><?php echo __('XXL', 'woo-shirt-product-designer'); ?></option>
+								<option value="35"><?php echo __('35', 'woo-shirt-product-designer'); ?></option>
+								<option value="36"><?php echo __('36', 'woo-shirt-product-designer'); ?></option>
+								<option value="37"><?php echo __('37', 'woo-shirt-product-designer'); ?></option>
+								<option value="38"><?php echo __('38', 'woo-shirt-product-designer'); ?></option>
+								<option value="39"><?php echo __('39', 'woo-shirt-product-designer'); ?></option>
+								<option value="40"><?php echo __('40', 'woo-shirt-product-designer'); ?></option>
+								<option value="41"><?php echo __('41', 'woo-shirt-product-designer'); ?></option>
+								<option value="42"><?php echo __('42', 'woo-shirt-product-designer'); ?></option>
+								<option value="43"><?php echo __('43', 'woo-shirt-product-designer'); ?></option>
+								<option value="44"><?php echo __('44', 'woo-shirt-product-designer'); ?></option>
+								<option value="45"><?php echo __('45', 'woo-shirt-product-designer'); ?></option>
 							</select>
 							<input name="quantity" type="number" value="1" min="1" class="woo_designer_quantity"/>
 							<input type="hidden" name="woo_designer_front_img_url" class="woo_designer_cart_front_img_url"/>
